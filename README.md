@@ -1,2 +1,2 @@
 # Calculator-Advanced-Swift-iOS13
-An iOSm app demonstrating advanced Swift concepts.
+An iOS app demonstrating advanced Swift concepts.
