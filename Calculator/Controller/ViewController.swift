@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var displayLabel: UILabel!
     private var isFinishedTypingNumber: Bool = true
+    private var calculator = CalculatorLogic()
     private var displayValue: Double {
         get {
             guard let number = Double(displayLabel.text!) else { fatalError("Cannot convert display label text to a Double!") }
@@ -25,13 +26,11 @@ class ViewController: UIViewController {
     @IBAction func calcButtonPressed(_ sender: UIButton) {
         // What should happen when a non-number button is pressed
         isFinishedTypingNumber = true
-    
+        calculator.setNumber(displayValue)
         if let calcMethod = sender.currentTitle {
-            let calculator = CalculatorLogic(number: displayValue)
-            guard let result = calculator.calculate(symbol: calcMethod) else {
-                fatalError("Result of the calculation is nil")
+            if let result = calculator.calculate(symbol: calcMethod) {
+                displayValue = result
             }
-            displayValue = result
         }
         
     }
